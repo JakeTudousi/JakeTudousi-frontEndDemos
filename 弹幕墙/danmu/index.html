@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>发射弹幕</title>
+    <style>
+        .dm {
+            width: 500px;
+            margin: 0px auto;
+            position: absolute;
+            /* border: 1px solid orange; */
+        }
+
+        .dm_mask {
+            border: 20px solid black;
+            width: 440px;
+            height: 335px;
+            background-origin: content-box;
+            background-size: contain;
+            background-image: url(bg.jpg);
+            position: absolute;
+        }
+
+        .dm_show {
+            width: 200px;
+            height: 20px;
+            position: relative;
+            left: 460px;
+            /* left: -220px; */
+        }
+
+        .send {
+            margin: 380px auto;
+            width: 440px;
+            position: relative;
+        }
+
+        input {
+            color: gray;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var txt = document.getElementById("txt1");
+            var btn = document.getElementById("btn1");
+            var show = document.getElementsByClassName("dm_show")[0];
+
+            txt.onclick = function () {
+                if (txt.value == "请接赵本山的下一句台词。") {
+                    txt.value = "";
+                }
+            }
+            txt.onblur = function () {
+                if (txt.value == "") {
+                    txt.value = "请接赵本山的下一句台词。";
+                }
+            }
+            btn.onclick = function () {
+                var dm = txt.value;
+                if (dm != "请接赵本山的下一句台词。") {
+                    //在dm_show里创建一个p标签，并把文本框里的文字，加入到p标签里
+                    show.innerHTML = "<p class='dm' style='color:red; font-size: 20px;'>" + dm + "</p>";
+                    //margin-left 终点-220px，起点460px
+                    //弹幕运动
+                    show.setAttribute("style","left:460px");
+                    startMove(-220);
+                }
+            }
+            var timer = null;
+            function startMove(iTarget) {
+                var oDiv = show;
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    var speed = 0;
+
+                    if (oDiv.offsetLeft < iTarget) {
+                        speed = 4;
+                    } else {
+                        speed = -4;
+                    }
+                    if (Math.abs(iTarget - oDiv.offsetLeft) <= 7) {
+                        clearInterval(timer);
+                        oDiv.style.left = iTarget + "px";
+                    } else {
+                        oDiv.style.left = oDiv.offsetLeft + speed + "px";
+                    }
+                }, 30);
+            }
+
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="dm">
+        <div class="dm_screen">
+            <div class="dm_mask">
+                <div class="dm_show">
+                    <!-- 其实就是字幕啦，只不过要通过JS去创建。  -->
+                    <!-- <p id="dm">text message!</p> -->
+                </div>
+            </div>
+        </div>
+        <div class="send">
+            <input id="txt1" type="text" value="请接赵本山的下一句台词。">
+            <input id="btn1" type="button" value="发射">
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>名人名言</title>
+    <style>
+        body {
+            background: yellowgreen;
+            position: relative;
+        }
+
+        .content {
+            position: absolute;
+        }
+
+        .box {
+            position: absolute;
+            top: 80px;
+            left: 400px;
+            border: 1px solid red;
+            height: 400px;
+            width: 700px;
+            background-color: #FFF;
+        }
+
+        .footer {
+            position: absolute;
+            height: 20px;
+            width: 80px;
+            top: 500px;
+            left: 700px;
+        }
+
+        .text {
+            position: absolute;
+            top: 50px;
+            font-size: large;
+            margin: 20px;
+        }
+
+        .author {
+            position: absolute;
+            left: 500px;
+            top: 100px;
+            margin: 20px;
+        }
+
+        .buttons {
+            position: absolute;
+            left: 60px;
+            top: 300px;
+        }
+
+        #btn1 {
+            position: absolute;
+            left: 550px;
+        }
+    </style>
+    <script>
+        let i = 1;
+        window.onload = () => {
+            let btn = document.getElementById("btn1");
+            let body = document.getElementsByTagName("body")[0];
+            let text=document.getElementById("text");
+            let author=document.getElementById("author");
+            //body背景颜色
+            let color = ["yellowgreen", "wheat", "turquoise", "teal",
+                "thistle", "whitesmoke", "aliceblue", "aqua", "beige", "blueviolet",
+                "brown", "burlywood", "chartreuse", "crimson", "darkorchid"]
+            //名人名言
+            let quotes=[
+                { "name": "——华盛顿", "text": "自己不能胜任的事情，切莫轻易答应别人，一旦答应了别人，就必须实践自己的诺言。" },
+                { "name": "——柳宗元", "text": "君子在下位则多谤，在上位则多誉；小人在下位则多誉，在上位则多谤。" },
+                { "name": "——歌德", "text": "你若要喜爱你自己的价值，你就得给世界创造价值。——歌德" },
+                { "name": "——荀况", "text": "君子赠人以言，庶人赠人以财。" },
+                { "name": "——莎士比亚", "text": "时间会刺破青春表面的彩饰，会在美人的额上掘深沟浅槽；会吃掉稀世之珍！天生丽质，什么都逃不过他那横扫的镰刀。" },
+                { "name": "——卡耐基", "text": "如果我们想交朋友，就要先为别人做些事——那些需要花时间、体力、体贴、奉献才能做到的事。" },
+                { "name": "——狄尔治夫人", "text": "原谅敌人要比原谅朋友容易。" },
+                { "name": "——郭小川", "text": "我们爱我们的民族，这是我们自信心的源泉。" },
+                { "name": "——柳宗元", "text": "愿每次回忆，对生活都不感到负疚。" },
+                { "name": "——惠特曼", "text": "对人不尊敬，首先就是对自己的不尊敬。" },
+                { "name": "——保罗", "text": "一个人的真正伟大之处就在于他能够认识到自己的渺小。" },
+                { "name": "——列夫·托尔斯泰", "text": "心灵纯洁的人，生活充满甜蜜和喜悦。" },
+                { "name": "——裴多菲", "text": "我是你的，我的祖国！都是你的，我的这心、这灵魂；假如我不爱你，我的祖国，我能爱哪一个人？" },
+                { "name": "——萧伯纳", "text": "自我控制是最强者的本能。" },
+                { "name": "——卡耐基", "text": "对别人的意见要表示尊重。千万别说：\"你错了。\"" },
+                { "name": "——伊索", "text": "那些背叛同伴的人，常常不知不觉地把自己也一起毁灭了。" }
+            ];
+            //按钮点击事件
+            //1.改变背景颜色，2.切换名人名言
+            btn.onclick = () => {
+                //依次改变15个背景颜色和名人名言
+                if (i > 15) {
+                    i = 1;
+                }
+                body.style.background = color[i];
+                text.innerText=quotes[i].text;
+                author.innerText=quotes[i].name;
+                console.log(i);
+                i++;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="content">
+        <div class="box">
+            <div class="text"><span id="text">时间会刺破青春表面的彩饰，会在美人的额上掘深沟浅槽；会吃掉稀世之珍！天生丽质，什么都逃不过他那横扫的镰刀。</span></div>
+            <div class="author"><span id="author">——莎士比亚</span></div>
+            <div class="buttons">
+                <input type="button" id="btn1" value="换一句">
+            </div>
+        </div>
+        <div class="footer">by <a href="http://www.1n40.cn">1n40</a></div>
+    </div>
+</body>
+
+</html>
