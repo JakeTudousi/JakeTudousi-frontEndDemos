@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老干妈产品介绍页面</title>
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #eee;
+            font-family: Arial, sans-serif;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        /* 局部样式 */
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            margin: auto 0;
+            /* 垂直自动 水平0 */
+        }
+
+        /* 给按钮家样式分别是：内边距上下不要左右各20px，高40px，字体大小跟父级元素一样，字体加粗，
+       加一根黑色实线1px宽圆角的边框，背景颜色是透明，当鼠标悬浮时变成小手 */
+        .btn {
+            padding: 0 20px;
+            height: 40px;
+            font-size: 1rem;
+            font-weight: 900;
+            border: #000 solid 1px;
+            border-radius: 5px;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        /*给头部标签加样式分别是：将其位置固定不变，始终在贴近最上端， 最小高度75px,内边距上下没有
+       左右各20px，设置成弹性盒子的容器，其子元素的排列方式子元素水平位置贴近边缘然后隔开，上下居
+       中，背景颜色是灰色*/
+        .header {
+            min-height: 75px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #eee;
+            width: 100%;
+        }
+
+        /*我要将导航的便签变成一排 且间隔开  */
+        .nav-bar ul {
+            display: flex;
+            justify-content: flex-end;
+
+        }
+
+        .nav-bar ul li {
+            padding: 0 20px;
+        }
+
+        /* 布局 */
+        .page-wrapper {
+            grid-template-areas:
+                'header header'
+                'container container'
+                'footer footer';
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 15px;
+        }
+
+        /* 媒体查询*/
+        /* 其他查询 */
+        @media (max-width: 500px){
+        }
+         /* 非手机 */
+        @media (min-width: 768px) {
+            .page-wrapper {
+                width: 750px;
+            }
+        }
+
+        .header {
+            grid-area: header;
+        }
+
+        .container {
+            grid-area: container;
+            display: grid;
+            grid-template-areas:
+                'company company'
+                'introduction introduction'
+                'product product'
+                'video video'
+                'news news';
+        }
+
+        .company {
+            grid-area: company;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 15px;
+        }
+
+        .introduction {
+            grid-area: introduction;
+        }
+
+        .product {
+            grid-area: product;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .video {
+            grid-area: video;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .news {
+            grid-area: news;
+            display: flex;
+            justify-content: start;
+        }
+        #email{
+            height: 2rem;
+        }
+        .footer {
+            grid-area: footer;
+            display: flex;
+            justify-content: start;
+        }
+        .footer ul{
+            display: flex;
+        }
+        .footer ul li{
+            padding: 0 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header class="header">
+            <div class="logo">
+                <img src="/img/logo.png" alt="老干妈logo">
+            </div>
+            <div class="nav-bar">
+                <ul>
+                    <li><a class="nav-link" href="#introduction">简介</a></li>
+                    <li><a class="nav-link" href="#product">产品</a></li>
+                    <li><a class="nav-link" href="#">美食</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="container">
+            <!--企业图片-->
+            <section class="company">
+                <img id="chang" src="/img/chang.jpg">
+            </section>
+            <!-- 简介-->
+            <section class="introduction">
+                <p id="introduction_text">
+                    老干妈”是公司创始人陶华碧女士白手起家创造的品牌，1996年，陶华碧董事长在贵阳龙洞堡创办工厂生产风味豆豉产品，通过近20年的发展，“老干妈”已经成为海内外华人中脍炙人口的辣椒调味品品牌。
+                    今天，老干妈公司已拥有分布在贵州省内的三个生产厂区，总面积达750亩，员工近5000人。每一天，老干妈人都为超过200万以上的消费者提供多种美味、健康的产品。
+                    热爱生活的人们对美味无止境的追求就是老干妈人努力工作的无穷动力，顾客持久满意并认可就是老干妈人的奋斗目标。</p>
+            </section>
+            <!--产品-->
+            <h2>产品介绍</h2>
+            <section class="product">
+                <div class="sauce1"><img src="/img/sauce1.png" alt="豆豉油辣椒"><p>豆豉油辣椒</p></div>
+                <div class="sauce2"><img src="/img/sauce2.png" alt="香菇油辣椒"><p>香菇油辣椒</p></div>
+                <div class="sauce3"><img src="/img/sauce3.png" alt="风味水豆豉"><p>风味水豆豉</p></div>
+                <div class="sauce4"><img src="/img/sauce4.png" alt="红油腐乳"><p>红油腐乳</p></div>
+                <div class="sauce5"><img src="/img/sauce5.png" alt="香辣菜"><p>香辣菜</p></div>
+                <div class="sauce6"><img src="/img/sauce1.png" alt="豆豉油辣椒"><p>豆豉油辣椒</p></div>
+            </section>
+            <!--视频-->
+            <section class="video">
+                <iframe src="//player.bilibili.com/player.html?aid=668633856&bvid=BV1Xa4y1Y7di&cid=208034628&page=1"
+                    scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                <iframe src="//player.bilibili.com/player.html?aid=64930544&bvid=BV1c4411R716&cid=112702260&page=1"
+                    scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+            </section>
+            <!--订阅消息-->
+            <section class="news">
+                <h2>订阅关于我们的消息</h2>
+                <form action="https://www.freecodecamp.com/email-submit">
+                    <input  name="email" id="email" placeholder="输入你的邮箱">
+                    <input type="button" value="确认" id="submit" class="btn">
+                </form>
+            </section>
+        </div>
+
+        <!--版权-->
+        <footer class="footer">
+            <span class="Copyrigh">Copyright 2020 <a href="http://www.1n40.cn/">1n40</a></span>
+            <ul>
+                <li><a href="#">简介</a></li>
+                <li><a href="#">产品</a></li>
+                <li><a href="#">美食</a></li>
+                <li><a href="https://mall.jd.com/index-1000100723.html?from=pc">京东自营</a></li>
+                <li><a href="https://laoganma.tmall.com/shop/view_shop.htm?spm=a230r.7195193.1997079397.2.186e1b687WomLX">天猫店铺</a></li>
+            </ul>
+        </footer>
+    </div>
+</body>
+
+</html>
